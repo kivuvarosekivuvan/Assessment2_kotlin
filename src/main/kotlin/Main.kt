@@ -1,7 +1,9 @@
 fun main(args: Array<String>) {
-passwordCheck("roseKivuvandu")
+    randomString(word.random())
+
+    passwordCheck("roseKivuvandu")
     multiples(1..100)
-    randomString()
+    randomString(word.random())
 }
 
 //Write and invoke one function that takes in a random string and returns the
@@ -9,7 +11,7 @@ passwordCheck("roseKivuvandu")
 //whether it begins with a vowel or not. (6pts)
 
 fun randomString(word:String):Any{
-//    val check=word.random()
+    val check=word.random()
     var vowels = arrayOf("a", "e", "i", "o", "u")
     val first = word[0]
     for (first in word) {
@@ -30,11 +32,6 @@ fun randomString(word:String):Any{
 }
 
 
-
-
-
-
-
 //Create a function that takes in a password as a parameter. For a password to
 //be valid it must meet the following conditions:
 //1. Must be at least 8 characters long
@@ -45,9 +42,12 @@ fun randomString(word:String):Any{
 //The function returns true/false (7pts)
 
 fun passwordCheck(password:String){
-//    var characters=password.length>=8 && password<=16
+    var conditionOne=password.length>=8 && password.length<=16
+    var conditionTwo=password!=password
+    var conditionThree=password.contains(0..9)
+
     for(x in password){
-        if(password.length>=8 && password.length<=16 && password!=password){
+        if(conditionOne &&  conditionTwo && conditionThree){
             println("Password is valid")
         }
         else{
@@ -84,14 +84,14 @@ fun multiples(nums:IntRange){
 //withdrawn
 //c. details() - Prints out the account number and balance and name in
 //this format: “Account number x with balance y is operated by z” (6pts)
- open data class CurrentAccount(var accountName:String, var accountNumber:Int, var balance:Double ){
+ data class CurrentAccount(var accountName:String, var accountNumber:Int, var balance:Double ){
     open  fun deposit(amount: Double):Double{
          balance+=amount
          return balance
 
      }
 
-    open fun withdraw(amount: Double):Double{
+     fun withdraw(amount: Double):Double{
         balance-=amount
         return balance
     }
@@ -109,8 +109,16 @@ fun multiples(nums:IntRange){
 //from the account. It also increments the withdrawals attribute after a
 //successful withdrawal (6pts)
 
-data class  SavingAccount(var accountName:String, var accountNumber:Int, var balance:Double):CurrentAccount(accountName,accountNumber,balance){
-
+data  class  SavingAccount(var accountName:String, var accountNumber:Int, var balance:Double):CurrentAccount(accountName,accountNumber,balance){
+fun withdrawals(withdrawals: Int){
+    var count=0
+    for (withdrawal in withdrawals){
+        if (withdrawal<4){
+            println("You can withdraw")
+        }
+    }
+    count++
+}
 }
 
 

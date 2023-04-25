@@ -1,9 +1,17 @@
+import java.awt.font.NumericShaper.Range
+
 fun main(args: Array<String>) {
     randomString(word.random())
 
     passwordCheck("roseKivuvandu")
     multiples(1..100)
-    randomString(word.random())
+
+   var p= CurrentAccount("Rose KIvuva", 234346453, 20000.00)
+    p.deposit(2000.00)
+    p.withdraw(600)
+
+    var x=SavingAccount("Mary", 25637844, 6000)
+    x.withdrawals(2)
 }
 
 //Write and invoke one function that takes in a random string and returns the
@@ -44,7 +52,7 @@ fun randomString(word:String):Any{
 fun passwordCheck(password:String){
     var conditionOne=password.length>=8 && password.length<=16
     var conditionTwo=password!=password
-    var conditionThree=password.contains(0..9)
+    var conditionThree=password =Range(0..9)
 
     for(x in password){
         if(conditionOne &&  conditionTwo && conditionThree){
@@ -109,7 +117,7 @@ fun multiples(nums:IntRange){
 //from the account. It also increments the withdrawals attribute after a
 //successful withdrawal (6pts)
 
-data  class  SavingAccount(var accountName:String, var accountNumber:Int, var balance:Double):CurrentAccount(accountName,accountNumber,balance){
+data class  SavingAccount(var accountName:String, var accountNumber:Int, var balance:Double):CurrentAccount(accountName,accountNumber,balance){
 fun withdrawals(withdrawals: Int){
     var count=0
     for (withdrawal in withdrawals){
